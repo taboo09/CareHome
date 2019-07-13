@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import  "../node_modules/bootstrap/dist/css/bootstrap-theme-yeti.min.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+
+
+blockquote footer{
+    margin-top: 0 !important;
+}
+.form-container{
+    width: 400px;
+}
+.form-container > * {
+    width: 100%;
+}
+
+.form-container button{
+    width: 50px;
+    margin-right: 5px;
+}
+
+.fa-thumb-tack, .fa-graduation-cap, .fa-info-circle{
+    font-size: 1.4rem;
+}
+.fa-graduation-cap, .fa-info-circle{
+    color: darkred;
+}
+
+/* Alertity JS */
+.alertify-notifier .ajs-message.ajs-success{
+    background-color: rgba(144, 238, 207, .85);
+    color: darkslategrey;
+    text-shadow: none;
+}

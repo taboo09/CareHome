@@ -1,0 +1,30 @@
+<div class="container" *ngIf="qualification">
+  <h3>Edit Qualification</h3>
+
+  <form [formGroup]="qualForm" (ngSubmit)="editForm()">
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <input matInput [formControl]="qualForm.get('type')" maxlength="36" required [(ngModel)]="qualification.type"
+          placeholder="Type is required">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Grade</mat-label>
+        <input matInput [formControl]="qualForm.get('grade')" type="number" max="10" required [(ngModel)]="qualification.grade"
+          placeholder="Grade is required">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Date</mat-label>
+        <input matInput [formControl]="qualForm.get('date')" required [(ngModel)]="qualification.date" [matDatepicker]="picker"
+          placeholder="Date is required">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-flat-button [disabled]="!qualForm.dirty || !qualForm.valid" type="submit">Save</button>
+      <button mat-flat-button color="warn" type="button" (click)="delete()">Delete </button>
+      <button mat-flat-button color="accent" type="button" (click)="cancel()">Cancel </button>
+      
+    </div>
+  </form>
+</div>

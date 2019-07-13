@@ -1,0 +1,70 @@
+<div class="card mb-3" *ngIf="home">
+    <div class="card-body">
+      <a href="" onClick="return false;"><i class="fa fa-thumb-tack float-right" [routerLink]="['/home']" ></i></a>
+      <h2 class="card-title">{{ home.name }}</h2>
+      <p class="card-text">Here it goes some info about {{ home.name }} ...</p>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Address</th>
+            <td>{{ home.address }}, {{ home.city }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Contact</th>
+            <td>{{ home.email }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Rating</th>
+            <td><i *ngFor="let i of [].constructor(home.rating)" class="fa fa-star"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container">
+        <div class="alert alert-light" role="alert" *ngIf="home.staffs.length == 0">
+          This Care Home has no staff!
+        </div>
+        <table mat-table [dataSource]="home.staffs" class="mat-elevation-z8" *ngIf="home.staffs.length">
+      
+          <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let i = index;let element; row"> {{ [i + 1] }} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{ element.forename }} {{ element.surename}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="dateOfBirth">
+            <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="jobTitle">
+            <th mat-header-cell *matHeaderCellDef> Job Title </th>
+            <td mat-cell *matCellDef="let element"> {{element.jobTitle}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="annualSalary">
+              <th mat-header-cell *matHeaderCellDef> Annual Salary </th>
+              <td mat-cell *matCellDef="let element"> {{element.annualSalary | currency : "£"}} </td>
+            </ng-container>
+      
+          <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element"> <a matTooltip="Edit" [routerLink]="['/edit-staff', element.id]"><i class="fa fa-info-circle"></i></a></td>
+          </ng-container>
+      
+          <ng-container matColumnDef="qualifications">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element"> <a matTooltip="Qualifications" [routerLink]="['/qualification', element.id]"><i class="fa fa-graduation-cap"></i></a></td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        
+        <button mat-flat-button color="primary" [routerLink]="['/new-staff', home.id]">Add New Staff</button>
+      </div>
+  </div>

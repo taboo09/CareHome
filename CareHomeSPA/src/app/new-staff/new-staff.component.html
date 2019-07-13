@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>New Staff</h1>
+
+  <form [formGroup]="staffForm" (ngSubmit)="addStaff()">
+    <div class="form-container">
+      <mat-form-field>
+        <input matInput [formControl]="staffForm.get('forename')" maxlength="24" required placeholder="{{!staffForm.get('forename').valid && staffForm.get('forename').touched ? 
+            'Forename is required' : 'Forename' }}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [formControl]="staffForm.get('surname')" maxlength="36" required placeholder="{{!staffForm.get('surname').valid && staffForm.get('surname').touched ? 
+            'Surname is required' : 'Surname' }}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [formControl]="staffForm.get('dateOfBirth')" required [matDatepicker]="picker" placeholder="{{!staffForm.get('dateOfBirth').valid && staffForm.get('dateOfBirth').touched ? 
+            'Date of Birth is required' : 'Date of Birth' }}">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [formControl]="staffForm.get('jobTitle')" maxlength="25" required placeholder="{{!staffForm.get('jobTitle').valid && staffForm.get('jobTitle').touched ? 
+            'Job Title is required' : 'Job Title' }}">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [formControl]="staffForm.get('annualSalary')" type="number" required placeholder="{{!staffForm.get('annualSalary').valid && staffForm.get('annualSalary').touched ? 
+            'Annual Salary is required' : 'Annual Salary' }}">
+      </mat-form-field>
+
+      <button mat-flat-button [disabled]="!staffForm.valid" type="submit">Save</button>
+      <button mat-flat-button color="warn" type="button" [routerLink]="['/home-card', id]">Cancel </button>
+    </div>
+  </form>
+</div>

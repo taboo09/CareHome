@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+    background-color: transparent;
+    margin: 1rem 0;
+  }
+
+.mat-cell, .mat-header-cell{
+    color: darkslategrey;
+}
+
+.container{
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,29 @@
+<h1>Add new Care Home</h1>
+
+<form [formGroup]="homeForm" (ngSubmit)="addHome()">
+    <div class="form-container">
+        <mat-form-field>
+            <input matInput [formControl]="homeForm.get('name')" maxlength="24" required placeholder="{{!homeForm.get('name').valid && homeForm.get('name').touched ? 
+            'Name is required' : 'Name' }}">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [formControl]="homeForm.get('address')" maxlength="36" required placeholder="{{!homeForm.get('address').valid && homeForm.get('address').touched ? 
+            'Address is required' : 'Address' }}">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [formControl]="homeForm.get('city')" maxlength="25" required placeholder="{{!homeForm.get('city').valid && homeForm.get('city').touched ? 
+            'City is required' : 'City' }}">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [formControl]="homeForm.get('email')" maxlength="255" required placeholder="{{getErrorMessageEmail()}}">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select [formControl]="homeForm.get('rating')" placeholder="Rating">
+                <mat-option *ngFor="let number of [1,2,3,4,5]" value="number">{{ number }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-flat-button [disabled]="!homeForm.valid" type="submit">Save</button>
+        <button mat-flat-button color="warn" type="button" (click)="cancel()">Cancel </button>
+    </div>
+</form>

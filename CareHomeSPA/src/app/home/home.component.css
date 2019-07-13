@@ -1,0 +1,18 @@
+.newHome{
+    margin-bottom: 1rem;
+    font-size: 1.1em;
+}
+.newHome:hover{
+    text-decoration: none;
+}
+
+.card{
+    width: 100%;
+}
+.fa-star{
+    color:orange;
+}
+
+.fa-thumb-tack{
+    transform: rotate(45deg);
+}

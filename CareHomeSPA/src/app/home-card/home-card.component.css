@@ -1,0 +1,14 @@
+.container{
+    margin-bottom: 1rem;
+}
+.card{
+    width: 100%;
+}
+.fa-star{
+    color:orange;
+}
+table {
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 1rem;
+  }

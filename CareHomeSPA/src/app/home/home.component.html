@@ -1,0 +1,35 @@
+<a mat-button [routerLink]="['/new-home']" class="newHome float-right"> Add CareHome </a>
+
+<div class="alert alert-light" role="alert" *ngIf="homes.length == 0">
+  There are no Care Homes to display, please use <span class="text-italic">Add CareHome</span> button to add a Care Home!
+  <a [routerLink]="['/new-home']" class="newHome float-right"> Add CareHome </a>
+</div>
+
+<div class="card mb-3" *ngFor="let home of homes">
+  <div class="card-body">
+    <a href="" onClick="return false;"><i class="fa fa-thumb-tack float-right" [routerLink]="['/home-card', home.id]"></i></a>
+    <h2 class="card-title">{{ home.name }}</h2>
+    <p class="card-text">Here it goes some info about {{ home.name }} ...</p>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Address</th>
+          <td>{{ home.address }}, {{ home.city }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Contact</th>
+          <td>{{ home.email }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Rating</th>
+          <td><i *ngFor="let i of [].constructor(home.rating)" class="fa fa-star"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <button mat-flat-button (click)="staffDisplay(home.id)" *ngIf="elementNr != home.id">See Staff</button>
+    <button mat-flat-button color="warn" (click)="staffDisplay(0)" *ngIf="elementNr == home.id">Close</button>
+  </div>
+
+  <app-staff [home]="home" *ngIf="elementNr == home.id"></app-staff>
+
+</div>

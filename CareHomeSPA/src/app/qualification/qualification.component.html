@@ -1,0 +1,69 @@
+<div class="container">
+  <h2 *ngIf="staff">Qualifications for: <span class="font-weight-normal"> {{ staff.forename }} {{ staff.surename }}
+    </span></h2>
+  <h6 [routerLink]="['/home-card', staff?.homeId]" ><a href="" onClick="return false;"><i class="fa fa-arrow-circle-left"></i> Care Home</a></h6>
+
+  <div class="alert alert-light" role="alert" *ngIf="staff && staff?.qualifications.length == 0">
+    {{ staff.forename }} {{ staff.surename }} has no qualifications!
+  </div>
+  <table mat-table [dataSource]="staff.qualifications" class="mat-elevation-z8" *ngIf="staff && staff?.qualifications.length">
+
+    <ng-container matColumnDef="no">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let i = index;let element; row"> {{ [i + 1] }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let element"> {{ element.type }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="grade">
+      <th mat-header-cell *matHeaderCellDef> Grade </th>
+      <td mat-cell *matCellDef="let element"> {{ element.grade }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{ element.date | date }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"> <a mat-button [routerLink]="['/edit-qualification', element.id]"> Details
+        </a></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <button mat-flat-button color="primary" (click)="displayForm()" *ngIf="!showForm">Add New Qualification</button>
+
+  <div class="qualForm" *ngIf="showForm">
+    <h3>New Qualification</h3>
+
+    <form [formGroup]="qualForm" (ngSubmit)="addQualification()">
+      <div class="form-container">
+        <mat-form-field>
+          <input matInput [formControl]="qualForm.get('type')" maxlength="36" required placeholder="{{!qualForm.get('type').valid && qualForm.get('type').touched ? 
+                  'Type is required' : 'Type' }}">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [formControl]="qualForm.get('grade')" type="number" max="10" required placeholder="{{!qualForm.get('grade').valid && qualForm.get('grade').touched ? 
+                  'Grade is required' : 'Grade' }}">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [formControl]="qualForm.get('date')" maxlength="25" required [matDatepicker]="picker"
+            placeholder="{{!qualForm.get('date').valid && qualForm.get('date').touched ? 
+                  'Date is required' : 'Date' }}">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button mat-flat-button [disabled]="!qualForm.valid" type="submit">Save</button>
+        <button mat-flat-button color="warn" type="button" (click)="cancel()">Cancel </button>
+      </div>
+    </form>
+  </div>
+</div>

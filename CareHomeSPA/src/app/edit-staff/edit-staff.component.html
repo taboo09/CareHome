@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Edit Staff</h1>
+
+  <form #editForm="ngForm" (ngSubmit)="editStaff(staff)" *ngIf="staff">
+    <div class="form-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Forename</mat-label>
+        <input matInput name="forename" maxlength="24" required [(ngModel)]="staff.forename" placeholder="Forename is required">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input matInput name="surname" maxlength="36" required [(ngModel)]="staff.surname" placeholder="Surname is required">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput name="dateOfBirth" required [matDatepicker]="picker" [(ngModel)]="staff.dateOfBirth"
+          placeholder="Date of Birth is required">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Job Title</mat-label>
+        <input matInput name="jobTitle" maxlength="25" required [(ngModel)]="staff.jobTitle" placeholder="Job Title is required">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Annual Salary</mat-label>
+        <input matInput name="annualSalary" type="number" required [(ngModel)]="staff.annualSalary" placeholder="Annual Salary is required">
+      </mat-form-field>
+
+      <button mat-flat-button [disabled]="!editForm.dirty || !editForm.valid" type="submit">Save</button>
+      <button mat-flat-button color="warn" type="button" (click)="deleteStaff()">Delete
+      </button>
+      <button mat-flat-button color="accent" type="button" [routerLink]="['/home-card', staff.homeId]">Cancel </button>
+    </div>
+  </form>
+</div>
