@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StaffService } from '../_services/staff.service';
+import {Subscription}  from "rxjs";
 
 @Component({
   selector: 'app-edit-staff',
@@ -15,7 +16,7 @@ export class EditStaffComponent implements OnInit {
   staff: any;
   editForm: NgForm;
   id: number;
-  sub: import("f:/Projects/CSharp/CareHome/CareHomeSPA/node_modules/rxjs/internal/Subscription").Subscription;
+  sub: Subscription;
 
   constructor(private fb: FormBuilder, 
     private activatedRouter: ActivatedRoute,

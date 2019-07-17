@@ -6,6 +6,7 @@ import { QualService } from './../_services/qual.service';
 import { Component, OnInit } from '@angular/core';
 import { StaffService } from '../_services/staff.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Subscription}  from "rxjs";
 
 @Component({
   selector: 'app-qualification',
@@ -16,7 +17,7 @@ export class QualificationComponent implements OnInit {
   staff: staff;
   qualification: any = {};
   staffId: number;
-  sub: import("f:/Projects/CSharp/CareHome/CareHomeSPA/node_modules/rxjs/internal/Subscription").Subscription;
+  sub: Subscription;
   displayedColumns: string[] = [];
   qualForm: FormGroup;
   showForm: boolean = false;

@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StaffService } from '../_services/staff.service';
 import { AlertifyService } from '../_services/alertify.service';
+import {Subscription}  from "rxjs";
 
 @Component({
   selector: 'app-new-staff',
@@ -13,7 +14,7 @@ export class NewStaffComponent implements OnInit {
   staffForm: FormGroup;
   staff: any = {};
   id: number;
-  sub: import("f:/Projects/CSharp/CareHome/CareHomeSPA/node_modules/rxjs/internal/Subscription").Subscription;
+  sub: Subscription;
 
   constructor(private fb: FormBuilder, 
     private activatedRouter: ActivatedRoute,
