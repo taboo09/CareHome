@@ -19,7 +19,7 @@
         </mat-form-field>
         <mat-form-field>
             <mat-select [formControl]="homeForm.get('rating')" placeholder="Rating">
-                <mat-option *ngFor="let number of [1,2,3,4,5]" value="number">{{ number }}</mat-option>
+                <mat-option *ngFor="let number of [1,2,3,4,5]" value="{{ number }}">{{ number }}</mat-option>
             </mat-select>
         </mat-form-field>
 
