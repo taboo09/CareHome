@@ -1,0 +1,8 @@
+### Get all homes
+
+GET http://localhost:5070/api/Home HTTP/1.1
+
+### Get home by id
+
+GET http://localhost:5070/api/Home/6 HTTP/1.1
+
